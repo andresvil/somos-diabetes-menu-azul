@@ -8,8 +8,16 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
 
 public class MainActivity extends AppCompatActivity {
+    ListView listView;
+    int[] icons = {R.drawable.monitoreo, R.drawable.estadisticas, R.drawable.mascota, R.drawable.curso,
+            R.drawable.retos, R.drawable.preguntas, R.drawable.agenda, R.drawable.recordatorio,
+            R.drawable.configuracion, R.drawable.salir};
+
+    String[] menuItems = {"Monitoreo", "Estadísticas", "Mascota", "Curso", "Retos", "Preguntas al Doctor",
+                    "Agenda", "Recordatorio", "Configuración", "Salir"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +25,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        listView = (ListView) findViewById(R.id.listView);
+        MyAdapter adapter = new MyAdapter(getApplicationContext(), R.layout.row_layout);
+        listView.setAdapter(adapter);
+
+        for(int i = 0; i < menuItems.length; i++)
+        {
+            MenuItems mi = new MenuItems(icons[i], menuItems[i]);
+            adapter.add(mi);
+        }
 
     }
 
