@@ -47,6 +47,11 @@ public class MyAdapter extends ArrayAdapter {
         return this.myList.get(position);
     }
 
+    /*@Override
+    public long getItemId(int position) {
+        MenuItems mi
+    }*/
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View row = convertView;

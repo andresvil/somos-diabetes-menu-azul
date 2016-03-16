@@ -8,9 +8,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
     ListView listView;
     int[] icons = {R.drawable.monitoreo, R.drawable.estadisticas, R.drawable.mascota, R.drawable.curso,
             R.drawable.retos, R.drawable.preguntas, R.drawable.agenda, R.drawable.recordatorio,
@@ -36,6 +38,15 @@ public class MainActivity extends AppCompatActivity {
             adapter.add(mi);
         }
 
+        listView.setOnItemClickListener(this);
+
+        /*listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(getApplicationContext(), "Selected: " + menuItems[position], Toast.LENGTH_SHORT).show();
+            }
+        });*/
+
     }
 
     @Override
@@ -58,5 +69,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Toast.makeText(getApplicationContext(), "Selected: " + menuItems[position], Toast.LENGTH_SHORT).show();
     }
 }
