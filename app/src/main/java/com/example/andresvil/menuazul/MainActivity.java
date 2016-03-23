@@ -12,7 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
+public class MainActivity extends AppCompatActivity {
     ListView listView;
     int[] icons = {R.drawable.monitoreo, R.drawable.estadisticas, R.drawable.mascota, R.drawable.curso,
             R.drawable.retos, R.drawable.preguntas, R.drawable.agenda, R.drawable.recordatorio,
@@ -38,14 +38,17 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             adapter.add(mi);
         }
 
-        listView.setOnItemClickListener(this);
+//        listView.setOnItemClickListener(this);
 
-        /*listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getApplicationContext(), "Selected: " + menuItems[position], Toast.LENGTH_SHORT).show();
+                MenuItems mi = (MenuItems) parent.getItemAtPosition(position);
+                System.out.println("Clicked!");
+
+//                Toast.makeText(MainActivity.this, "Selected: " + mi.getMenuItem(), Toast.LENGTH_SHORT).show();
             }
-        });*/
+        });
 
     }
 
@@ -71,8 +74,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
+    /*@Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Toast.makeText(getApplicationContext(), "Selected: " + menuItems[position], Toast.LENGTH_SHORT).show();
-    }
+    }*/
 }

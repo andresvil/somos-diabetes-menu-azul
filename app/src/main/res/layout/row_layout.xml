@@ -6,7 +6,10 @@
     android:layout_marginBottom="0dp"
     android:focusableInTouchMode="true"
     android:background="#0064A8"
-    android:layout_gravity="center_horizontal">
+    android:layout_gravity="center_horizontal"
+    android:descendantFocusability="blocksDescendants"
+    android:focusable="false"
+    android:clickable="false">
 
     <ImageView
         android:id="@+id/icon"
@@ -16,9 +19,9 @@
         android:paddingLeft="25dp"
         android:layout_marginLeft="25dp"
         android:src="@drawable/agenda"
-        android:focusableInTouchMode="false"
         android:focusable="false"
-        android:clickable="false"/>
+        android:clickable="false"
+        android:focusableInTouchMode="false"/>
 
     <TextView
         android:id="@+id/menu_item"
@@ -29,8 +32,8 @@
         android:textColor="@android:color/white"
         android:textSize="20sp"
         android:text="Modulo 1"
-        android:focusableInTouchMode="false"
         android:focusable="false"
-        android:clickable="false"/>
+        android:clickable="false"
+        android:focusableInTouchMode="false"/>
 
 </LinearLayout>

@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,15 +48,15 @@ public class MyAdapter extends ArrayAdapter {
         return this.myList.get(position);
     }
 
-    /*@Override
+    @Override
     public long getItemId(int position) {
-        MenuItems mi
-    }*/
+        return position;
+    }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View row = convertView;
-        ImgHolder holder;
+        final ImgHolder holder;
 
         if(row == null) {
             LayoutInflater inflater = (LayoutInflater) this.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -72,7 +73,7 @@ public class MyAdapter extends ArrayAdapter {
             holder = (ImgHolder) row.getTag();
         }
 
-        MenuItems mi = (MenuItems) getItem(position);
+        final MenuItems mi = (MenuItems) getItem(position);
 
         // Set text and image
         holder.ICON.setImageResource(mi.getIcon_rsc());
@@ -82,6 +83,14 @@ public class MyAdapter extends ArrayAdapter {
         AssetManager am = getContext().getApplicationContext().getAssets();
         Typeface myFont = Typeface.createFromAsset(am, String.format(Locale.US, "fonts/%s", "AvenirLTStd-Roman_0.otf"));
         holder.MENUITEM.setTypeface(myFont);
+
+        // Set OnClickListener
+        row.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), mi.getMenuItem() + " clicked!", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         return row;
     }
